@@ -1,0 +1,34 @@
+{
+  "name": "developer-connect",
+  "version": "1.0.0",
+  "description": "social network for developers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iAmPriyam/developer-connect.git"
+  },
+  "author": "Aditya Priyam",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/iAmPriyam/developer-connect/issues"
+  },
+  "homepage": "https://github.com/iAmPriyam/developer-connect#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.3.2",
+    "mongoose": "^5.7.4",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
