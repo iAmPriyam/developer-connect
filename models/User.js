@@ -1,6 +1,6 @@
 const mongoose= require('mongoose');
 
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // Create a scheme for the User model
 const UserSchema= new Schema({
@@ -18,7 +18,6 @@ const UserSchema= new Schema({
     },
     avatar:{
         type:String,
-        required:true
     },
     date:{
         type:Date,
