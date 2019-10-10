@@ -3,9 +3,15 @@ const mongoose= require('mongoose');
 const users = require('./routes/api/users');
 const profiles = require('./routes/api/profiles');
 const posts = require('./routes/api/posts');
+const bodyParser= require('body-parser');
+
+
 
 const app=express();
 //DB config
+
+app.use(bodyParser.urlencoded({extednded:false}));
+app.use(bodyParser.json());
 
 const db=require('./config/keys').mongoURI;
 // const client= new MongoClient(db,;
