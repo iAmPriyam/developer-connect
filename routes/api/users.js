@@ -4,6 +4,7 @@ const gravatar=require('gravatar');
 const bcrypt=require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const key =require('../../config/keys');
+const passport=     require('passport')
 
 
 //Load User Model
@@ -80,9 +81,10 @@ router.post('/login',(req, res)=>{
                         // sign token
                         jwt.sign(
                             payload, 
-                            key.secret, 
-                            { expiresIn : 6000}, 
+                            key.secretOrKey, 
+                            { expiresIn : 3600}, 
                             (err, token) => { 
+                                if(err) throw err;
                                 res.json({
                                     success:true,
                                     token : "Bearer " + token
@@ -95,4 +97,15 @@ router.post('/login',(req, res)=>{
                 })
         })
 });
+
+
+
+
+//@route GET api/users/current
+//@desc returns current user
+//@access Protected
+router.get('/current', passport.authenticate('jwt', {session:false}), (req,res)=>{
+    res.json(req.user)
+});
+
 module.exports = router;

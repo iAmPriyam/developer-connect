@@ -4,6 +4,7 @@ const users = require('./routes/api/users');
 const profiles = require('./routes/api/profiles');
 const posts = require('./routes/api/posts');
 const bodyParser= require('body-parser');
+const passport= require('passport');
 
 
 
@@ -12,6 +13,7 @@ const app=express();
 
 app.use(bodyParser.urlencoded({extednded:false}));
 app.use(bodyParser.json());
+
 
 const db=require('./config/keys').mongoURI;
 // const client= new MongoClient(db,;
@@ -24,6 +26,12 @@ app.get('/',(req,res)=>{
     res.send('Hello World!');
 });
 
+
+//Passport middleware
+app.use(passport.initialize());
+
+//Passport config
+require('./config/passport')(passport);
 
 app.use('/api/users',users);
 app.use('/api/profile',profiles);
