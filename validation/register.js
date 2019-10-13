@@ -21,7 +21,7 @@ module.exports = function validateRegisterInput(data){
     if(Validator.isEmpty(data.email)){
         errors.email="Email field cannot be left empty";
     }
-    if(Validator.isEmail(data.email)){
+    if(!Validator.isEmail(data.email)){
         errors.email="Invalid email";
     }
 
@@ -29,7 +29,7 @@ module.exports = function validateRegisterInput(data){
         errors.password="Password field cannot be left empty";
     }
 
-    if(Validator.isLength(data.password, {min:8, max:30})){
+    if(!Validator.isLength(data.password, {min:8, max:30})){
         errors.password="Password should be atleast 8 characters";
     }
 
@@ -37,7 +37,7 @@ module.exports = function validateRegisterInput(data){
         errors.password2="Confirm password field cannot be left empty";
     }
 
-    if(Validator.equals(data.password,data.password2)){
+    if(!Validator.equals(data.password,data.password2)){
         errors.password=" Passwords doesn't match.";
     }
 
