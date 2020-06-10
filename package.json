@@ -29,7 +29,7 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.3"
+    "nodemon": "^2.0.4"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
