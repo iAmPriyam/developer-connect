@@ -31,5 +31,7 @@
   "devDependencies": {
     "nodemon": "^1.19.3"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }

@@ -14,6 +14,7 @@ const User = require('../../models/User');
 
 // Load input validation
 const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 
 //@route GET api/users/test
@@ -28,7 +29,7 @@ router.get('/test', ( req,res) => res.json({msg:"User works"}));
 router.post('/register', (req,res)=>{
 
     const {errors, isValid} =validateRegisterInput(req.body)
-    
+
     // Input validation
     if(!isValid){
         return res.status(400).json(errors);
@@ -70,15 +71,22 @@ router.post('/register', (req,res)=>{
 //@desc     Register User
 //@access   Public
 router.post('/login',(req, res)=>{
+
+    const {errors, isValid} =validateLoginInput(req.body);
+
+    // Input validation
+    if(!isValid){
+        return res.status(400).json(errors);
+    }
+
     const email=req.body.email;
-    const password=req.body.password;
-
-
+    const password=req.body.password;    
     User.findOne({email:email})
         .then(user=>{
             //Check for user
             if(!user){
-                res.status(400).json({email:"No user registered with this email!"});
+                errors.email="Email not found"
+                res.status(400).json(errors);
             }
 
             bcrypt.compare(password, user.password)
@@ -105,7 +113,8 @@ router.post('/login',(req, res)=>{
                             });
                     }
                     else{
-                        res.status(400).json({password:"Password incorrect!"});
+                        errors.password="Password Incorrect";
+                        res.status(400).json(errors);
                     }
                 })
         })
