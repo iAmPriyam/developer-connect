@@ -13,3 +13,8 @@ Developer connect is a social media platform which aims to bring together the de
 6. comment on posts created by the developers
 
 # Dependencies
+
+#### The following are required to set up the projects:
+1. Node (NPM)
+2. ReactJS
+
