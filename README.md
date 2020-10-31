@@ -18,3 +18,7 @@ Developer connect is a social media platform which aims to bring together the de
 1. Node
 2. ReactJS
 
+## Setup
+
+Start Server
+```npm start```
